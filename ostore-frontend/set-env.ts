@@ -1,7 +1,6 @@
-import { writeFile } from 'fs';
-
-require('dotenv').load();
+require('dotenv').config();
 const colors = require('colors');
+const fs = require('fs');
 
 const targetPath = './src/environments/environment.ts';
 const targetProdPath = './src/environments/environment.prod.ts';
@@ -40,7 +39,7 @@ console.log(
 
 console.log(colors.grey(envConfigFile));
 
-writeFile(targetPath, envConfigFile, function(err) {
+fs.writeFile(targetPath, envConfigFile, function(err) {
   if (err) {
     throw console.error(err);
   } else {
@@ -59,7 +58,7 @@ console.log(
 );
 
 console.log(colors.grey(envConfigProdFile));
-writeFile(targetProdPath, envConfigProdFile, function(err) {
+fs.writeFile(targetProdPath, envConfigProdFile, function(err) {
   if (err) {
     throw console.error(err);
   } else {
