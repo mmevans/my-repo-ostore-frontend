@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth-guard/auth-guard.service';
 import { AuthService } from './service-auth/auth.service';
 import { LoginComponent } from './login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,11 +25,23 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
-  { path: 'check-out', component: CheckoutComponent },
-  { path: 'order-success', component: OrderSuccessComponent },
-  { path: 'my-orders', component: MyOrdersComponent },
-  { path: 'admin/products', component: AdminProductsComponent },
-  { path: 'admin/orders', component: AdminOrdersComponent }
+  { path: 'check-out', component: CheckoutComponent, canActivate: [AuthGuard] },
+  {
+    path: 'order-success',
+    component: OrderSuccessComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: 'my-orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
+  {
+    path: 'admin/products',
+    component: AdminProductsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin/orders',
+    component: AdminOrdersComponent,
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({
@@ -53,7 +66,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true })
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
