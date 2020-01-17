@@ -9,15 +9,15 @@ import * as firebase from 'firebase';
 export class AuthService {
   user$: Observable<firebase.User>;
 
-  constructor(public afAuth: AngularFireAuth) {
-    this.user$ = afAuth.authState;
+  constructor(public angularFirebaseAuth: AngularFireAuth) {
+    this.user$ = angularFirebaseAuth.authState;
   }
 
   login() {
-    this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    this.angularFirebaseAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
   }
 
   logout() {
-    this.afAuth.auth.signOut();
+    this.angularFirebaseAuth.auth.signOut();
   }
 }
