@@ -33,6 +33,8 @@ const appRoutes: Routes = [
     LoginComponent,
     ShoppingCartComponent,
     CheckoutComponent,
+    HomeComponent,
+    ProductsComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
     AdminOrdersComponent,
