@@ -1,3 +1,4 @@
+import { UserService } from './service-user/user.service';
 import { AuthGuard } from './auth-guard/auth-guard.service';
 import { AuthService } from './service-auth/auth.service';
 import { LoginComponent } from './login/login.component';
@@ -66,7 +67,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true })
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
