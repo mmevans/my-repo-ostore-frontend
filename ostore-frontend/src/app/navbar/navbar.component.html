@@ -19,7 +19,11 @@
           >
         </li>
       </ng-template>
+<<<<<<< HEAD
       <li class="nav-item dropdown" *ngIf="appUserObservable | async; else anonymousUser">
+=======
+      <li class="nav-item dropdown" *ngIf="appUser; else anonymousUser">
+>>>>>>> 7e8c3c2... fix: protected-admin-routes
         <a
           class="nav-link dropdown-toggle"
           href="#"
@@ -28,7 +32,11 @@
           aria-haspopup="true"
           aria-expanded="false"
         >
+<<<<<<< HEAD
           {{ appUserObservable.name }}
+=======
+          {{ appUser.name }}
+>>>>>>> 7e8c3c2... fix: protected-admin-routes
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a
