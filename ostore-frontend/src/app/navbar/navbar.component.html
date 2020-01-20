@@ -19,7 +19,7 @@
           >
         </li>
       </ng-template>
-      <li class="nav-item dropdown" *ngIf="appUserObservale | async; else anonymousUser">
+      <li class="nav-item dropdown" *ngIf="appUserObservable | async; else anonymousUser">
         <a
           class="nav-link dropdown-toggle"
           href="#"
@@ -28,7 +28,7 @@
           aria-haspopup="true"
           aria-expanded="false"
         >
-          {{ appUser.name }}
+          {{ appUserObservable.name }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a
