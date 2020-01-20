@@ -34,7 +34,7 @@ export class AuthService {
     this.angularFirebaseAuth.auth.signOut();
   }
 
-  get appUser$(): Observable<AppUser> {
+  get getUserObservable(): Observable<AppUser> {
     return this.userObservable.pipe(
       switchMap(user => {
         if (user) return this.userService.get(user.uid).valueChanges();
