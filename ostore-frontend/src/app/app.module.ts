@@ -1,9 +1,12 @@
+import { ProductService } from './service-product/product.service';
+import { CategoryService } from './service-category/category.service';
 import { UserService } from './service-user/user.service';
 import { AuthGuard } from './auth-guard/auth-guard.service';
 import { AuthService } from './service-auth/auth.service';
 import { LoginComponent } from './login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule } from '@angular/fire';
@@ -21,6 +24,7 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AdminAuthGuard } from './admin-auth-guard/admin-auth-guard.service';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -58,17 +62,26 @@ const appRoutes: Routes = [
     OrderSuccessComponent,
     MyOrdersComponent,
     AdminOrdersComponent,
-    AdminProductsComponent
+    AdminProductsComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true })
   ],
-  providers: [AuthService, AuthGuard, UserService, AdminAuthGuard],
+  providers: [
+    AuthService,
+    AuthGuard,
+    UserService,
+    AdminAuthGuard,
+    CategoryService,
+    ProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
