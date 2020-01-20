@@ -11,7 +11,7 @@ import { of } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  user$: Observable<User>;
+  userObservable: Observable<User>;
 
   constructor(
     public angularFirebaseAuth: AngularFireAuth,
@@ -19,7 +19,7 @@ export class AuthService {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.user$ = angularFirebaseAuth.authState;
+    this.userObservable = angularFirebaseAuth.authState;
   }
 
   login() {
@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   get appUser$(): Observable<AppUser> {
-    return this.user$.pipe(
+    return this.userObservable.pipe(
       switchMap(user => {
         if (user) return this.userService.get(user.uid).valueChanges();
 
