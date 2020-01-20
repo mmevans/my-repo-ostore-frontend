@@ -19,7 +19,7 @@
           >
         </li>
       </ng-template>
-      <li class="nav-item dropdown" *ngIf="appUser; else anonymousUser">
+      <li class="nav-item dropdown" *ngIf="appUserObservale | async; else anonymousUser">
         <a
           class="nav-link dropdown-toggle"
           href="#"
