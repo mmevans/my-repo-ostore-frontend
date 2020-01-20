@@ -1,3 +1,4 @@
+import { AppUser } from './../models/app-user';
 import { AuthService } from './../service-auth/auth.service';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -7,9 +8,10 @@ import { Observable } from 'rxjs';
   templateUrl: './navbar.component.html'
 })
 export class NavbarComponent {
-  user$: Observable<firebase.User>;
-
-  constructor(private auth: AuthService) {}
+  appUser: AppUser;
+  constructor(private auth: AuthService) {
+    auth.appUser$.subscribe(appUser => (this.appUser = appUser));
+  }
 
   logout() {
     this.auth.logout();

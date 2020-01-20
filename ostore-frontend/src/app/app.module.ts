@@ -20,6 +20,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { AdminAuthGuard } from './admin-auth-guard/admin-auth-guard.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,12 +37,12 @@ const appRoutes: Routes = [
   {
     path: 'admin/products',
     component: AdminProductsComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, AdminAuthGuard]
   },
   {
     path: 'admin/orders',
     component: AdminOrdersComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, AdminAuthGuard]
   }
 ];
 
@@ -67,7 +68,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true })
   ],
-  providers: [AuthService, AuthGuard, UserService],
+  providers: [AuthService, AuthGuard, UserService, AdminAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
