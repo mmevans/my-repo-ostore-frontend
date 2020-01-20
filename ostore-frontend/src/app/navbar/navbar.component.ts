@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   templateUrl: './navbar.component.html'
 })
 export class NavbarComponent {
-  appUserObservale: Observable<AppUser>;
+  appUserObservable: Observable<AppUser>;
   
   constructor(private auth: AuthService) {
    this.appUserObservable = auth.getUserObservable();
