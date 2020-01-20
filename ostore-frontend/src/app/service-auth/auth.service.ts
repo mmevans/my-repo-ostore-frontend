@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { User, auth } from 'firebase';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppUser } from '../models/app-user';
+import { of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -35,7 +36,11 @@ export class AuthService {
 
   get appUser$(): Observable<AppUser> {
     return this.user$.pipe(
-      switchMap(user => this.userService.get(user.uid).valueChanges())
+      switchMap(user => {
+        if (user) return this.userService.get(user.uid).valueChanges();
+
+        return of(null);
+      })
     );
   }
 }
