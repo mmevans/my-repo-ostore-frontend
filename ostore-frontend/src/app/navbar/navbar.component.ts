@@ -12,7 +12,6 @@ export class NavbarComponent {
 
   constructor(private auth: AuthService) {
     this.appUserObservable = auth.getUserObservable();
-    this.appUserObservable.subscribe(x => console.log(x));
   }
 
   logout() {

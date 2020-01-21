@@ -2,18 +2,13 @@
   <div class="form-group">
     <label for="title">Title</label>
     <input
-      #title="ngModel"
       ngModel
       name="title"
       type="text"
       class="form-control"
       id="title"
       placeholder="oranges"
-      required
     />
-  </div>
-  <div class="alert alert-danger" *ngIf="title.touch && title.invalid">
-    Title is required.
   </div>
   <label for="price">Price</label>
   <div class="form-group input-group">
