@@ -9,9 +9,10 @@ import { Observable } from 'rxjs';
 })
 export class NavbarComponent {
   appUserObservable: Observable<AppUser>;
-  
+
   constructor(private auth: AuthService) {
-   this.appUserObservable = auth.getUserObservable();
+    this.appUserObservable = auth.getUserObservable();
+    this.appUserObservable.subscribe(x => console.log(x));
   }
 
   logout() {
