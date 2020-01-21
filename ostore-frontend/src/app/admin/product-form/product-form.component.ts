@@ -13,7 +13,7 @@ import { take } from 'rxjs/operators';
 export class ProductFormComponent {
   categoriesObservable: Observable<[Category]>;
   product = {};
-  id;
+  id: String;
   constructor(
     private categoryService: CategoryService,
     private productService: ProductService,
