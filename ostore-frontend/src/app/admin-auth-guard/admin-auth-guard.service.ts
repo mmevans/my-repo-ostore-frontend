@@ -11,7 +11,9 @@ import { map } from 'rxjs/operators';
 export class AdminAuthGuard implements CanActivate {
   constructor(private auth: AuthService, private userService: UserService) {}
 
-  canActivate(): Observable<boolean> {
-    return this.auth.appUser$.pipe(map(appUser => appUser.isAdmin));
+  canActivate(): Observable<any> {
+    return this.auth.userObservable
+      .pipe(switchMap(user => this.userService.get(user.uid)))
+      .pipe(map(appUser => appUser.isAdmin));
   }
 }

@@ -8,11 +8,7 @@ import { Component } from '@angular/core';
   templateUrl: './product-form.component.html'
 })
 export class ProductFormComponent {
-<<<<<<< HEAD
   categoriesObservable: Observable<[Category]>;
-=======
-  categoriesObservable;
->>>>>>> acc7851... Update product-form.component.ts
 
   constructor(
     categoryService: CategoryService,

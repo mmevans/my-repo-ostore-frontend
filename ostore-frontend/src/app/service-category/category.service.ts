@@ -15,10 +15,6 @@ export class CategoryService {
         const sortByName = ref.orderByChild('name');
         return sortByName;
       })
-<<<<<<< HEAD
       .valueChanges() as Observable<[Category]>;
-=======
-      .valueChanges() as Observable<[AppCategory]>;
->>>>>>> e8e8986... Update category.service.ts
   }
 }
