@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AdminProduct } from '../models/app-admin-product';
 import { map } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,9 +30,9 @@ export class ProductService {
   }
 
   get(productId) {
-    return this.db
+    return (this.db
       .object('/products/' + productId)
-      .valueChanges() as Observable<AdminProduct>;
+      .valueChanges() as Observable<AdminProduct>).pipe(take(1));
   }
 
   update(productId, product) {

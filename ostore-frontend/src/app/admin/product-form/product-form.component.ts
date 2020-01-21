@@ -26,7 +26,6 @@ export class ProductFormComponent {
     if (this.id)
       this.productService
         .get(this.id)
-        .pipe(take(1))
         .subscribe(product => (this.product = product));
   }
 
