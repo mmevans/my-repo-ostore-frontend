@@ -1,3 +1,4 @@
+import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { ShoppingCartService } from './service-shopping-cart/shopping-cart.service';
 import { ProductService } from './service-product/product.service';
 import { CategoryService } from './service-category/category.service';
@@ -78,7 +79,8 @@ const appRoutes: Routes = [
     AdminProductsComponent,
     ProductFormComponent,
     ProductsFilterComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductQuantityComponent
   ],
   imports: [
     BrowserModule,

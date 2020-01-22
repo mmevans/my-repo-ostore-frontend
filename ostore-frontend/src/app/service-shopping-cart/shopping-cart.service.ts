@@ -18,8 +18,8 @@ export class ShoppingCartService {
     });
   }
 
-  async getCart(): Promise<Observable<ShoppingCart>> {
-    const cartId = await this.getOrCreateCartId();
+  getCart(): Observable<ShoppingCart> {
+    const cartId = this.getOrCreateCartId();
     return this.db
       .object('/shopping-carts/' + cartId)
       .valueChanges()
@@ -30,11 +30,11 @@ export class ShoppingCartService {
     return this.db.object('/shopping-carts/' + cartId + '/items/' + productId);
   }
 
-  private async getOrCreateCartId(): Promise<string> {
+  private getOrCreateCartId() {
     let cartId = localStorage.getItem('cartId');
     if (cartId) return cartId;
 
-    let result = await this.create();
+    let result = this.create();
     localStorage.setItem('cartId', result.key);
     return result.key;
   }
@@ -47,9 +47,10 @@ export class ShoppingCartService {
     this.updateItemQuantity(product, -1);
   }
 
-  private async updateItemQuantity(product: AdminProduct, change: number) {
-    let cartId = await this.getOrCreateCartId();
-    this.itemObservable = this.getItem(cartId, product.key);
+  private updateItemQuantity(product: AdminProduct, change: number) {
+    let cartId = this.getOrCreateCartId();
+
+    this.itemObservable = this.getItem(cartId, product.id);
     this.itemObservable
       .snapshotChanges()
       .pipe(take(1))
