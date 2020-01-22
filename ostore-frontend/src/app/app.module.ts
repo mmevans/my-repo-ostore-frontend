@@ -25,9 +25,11 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AdminAuthGuard } from './admin-auth-guard/admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { ProductsFilterComponent } from './products/products-filter/products-filter.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: ProductsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
@@ -73,7 +75,9 @@ const appRoutes: Routes = [
     MyOrdersComponent,
     AdminOrdersComponent,
     AdminProductsComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductsFilterComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
