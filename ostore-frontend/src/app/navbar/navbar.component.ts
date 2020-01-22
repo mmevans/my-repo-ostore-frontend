@@ -21,8 +21,8 @@ export class NavbarComponent implements OnInit {
     this.auth.logout();
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.appUserObservable = this.auth.getUserObservable();
-    this.cartObservable = await await this.shoppingCartService.getCart();
+    this.cartObservable = this.shoppingCartService.getCart();
   }
 }
