@@ -9,8 +9,15 @@
           class="nav-link"
           routerLink="/shopping-cart"
           routerLinkActive="active"
-          >Shopping Cart</a
         >
+          Shopping Cart
+          <span
+            class="badge badge-warning badge-pill"
+            *ngIf="cartObservable | async as cart"
+          >
+            {{ cart.totalItemsCount }}
+          </span>
+        </a>
       </li>
       <ng-template #anonymousUser>
         <li class="nav-item active">

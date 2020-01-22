@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './service-shopping-cart/shopping-cart.service';
 import { ProductService } from './service-product/product.service';
 import { CategoryService } from './service-category/category.service';
 import { UserService } from './service-user/user.service';
@@ -94,7 +95,8 @@ const appRoutes: Routes = [
     UserService,
     AdminAuthGuard,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })
