@@ -13,4 +13,8 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
     this.cartObservable = this.shoppingCartService.getCart();
   }
+
+  clearCart() {
+    this.shoppingCartService.clearCart();
+  }
 }

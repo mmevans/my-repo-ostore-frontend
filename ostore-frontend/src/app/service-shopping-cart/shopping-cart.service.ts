@@ -20,10 +20,23 @@ export class ShoppingCartService {
 
   getCart(): Observable<ShoppingCart> {
     const cartId = this.getOrCreateCartId();
+    console.log('cartid', cartId);
     return this.db
       .object('/shopping-carts/' + cartId)
       .valueChanges()
       .pipe(map((cart: any) => new ShoppingCart(cart.items)));
+  }
+
+  addToCart(product: AdminProduct) {
+    this.updateItemQuantity(product, 1);
+  }
+
+  removeFromCart(product: AdminProduct) {
+    this.updateItemQuantity(product, -1);
+  }
+  clearCart() {
+    let cartId = this.getOrCreateCartId();
+    this.db.object('/shopping-carts/' + cartId + '/items').remove();
   }
 
   private getItem(cartId: string, productId: string) {
@@ -39,14 +52,6 @@ export class ShoppingCartService {
     return result.key;
   }
 
-  addToCart(product: AdminProduct) {
-    this.updateItemQuantity(product, 1);
-  }
-
-  removeFromCart(product: AdminProduct) {
-    this.updateItemQuantity(product, -1);
-  }
-
   private updateItemQuantity(product: AdminProduct, change: number) {
     let cartId = this.getOrCreateCartId();
 
@@ -55,13 +60,16 @@ export class ShoppingCartService {
       .snapshotChanges()
       .pipe(take(1))
       .subscribe((item: any) => {
-        this.itemObservable.update({
-          product: product,
-          quantity:
-            (item.payload.val() && item.payload.val().quantity
-              ? item.payload.val().quantity
-              : 0) + change
-        });
+        let quantity =
+          (item.payload.val() && item.payload.val().quantity
+            ? item.payload.val().quantity
+            : 0) + change;
+        if (quantity === 0) this.itemObservable.remove();
+        else
+          this.itemObservable.update({
+            product: product,
+            quantity: quantity
+          });
       });
   }
 }

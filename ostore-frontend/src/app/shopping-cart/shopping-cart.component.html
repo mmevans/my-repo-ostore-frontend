@@ -15,7 +15,10 @@
           {{ item.product.title }}
         </td>
         <td>
-          {{ item.quantity }}
+          <product-quantity
+            [product]="item.product"
+            [shopping-cart]="cart"
+          ></product-quantity>
         </td>
         <td>
           {{ item.totalPrice | currency: 'USD':true }}
@@ -25,9 +28,12 @@
     <tfoot>
       <tr>
         <th></th>
-        <th>yoo</th>
+        <th></th>
         <th>{{ cart.getTotalPrice | currency: 'USD':true }}</th>
       </tr>
     </tfoot>
   </table>
+  <button (click)="clearCart()" class="btn btn-danger btn-sm">
+    Clear Shopping Cart
+  </button>
 </ng-container>
