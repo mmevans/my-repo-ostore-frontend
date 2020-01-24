@@ -1,7 +1,7 @@
+import { environment } from '../environments/environment';
 import { CoreModule } from './core/core.module';
 import { ShoppingModule } from './shopping/shopping.module';
 import { AdminModule } from './admin/admin.module';
-import { AuthGuard } from './shared/auth-guard/auth-guard.service';
 import { LoginComponent } from './core/login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -11,7 +11,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { environment } from 'src/environments/environment';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './shopping/products/products.component';
 import { AdminAuthGuard } from './admin/admin-auth-guard/admin-auth-guard.service';
