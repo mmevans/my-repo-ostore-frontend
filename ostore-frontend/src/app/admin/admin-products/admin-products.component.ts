@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
-import { ProductService } from 'src/app/service-product/product.service';
-import { AdminProduct } from 'src/app/models/app-admin-product';
+import { ProductService } from '../../shared/service-product/product.service';
+import { AdminProduct } from '../../shared/models/app-admin-product';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({

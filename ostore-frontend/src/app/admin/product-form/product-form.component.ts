@@ -1,11 +1,9 @@
 import { Observable } from 'rxjs';
-import { Category } from './../../models/app-category';
-import { ProductService } from './../../service-product/product.service';
-import { CategoryService } from './../../service-category/category.service';
+import { Category } from '../../shared/models/app-category';
+import { ProductService } from '../../shared/service-product/product.service';
+import { CategoryService } from '../../shared/service-category/category.service';
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AdminProduct } from 'src/app/models/app-admin-product';
-import { take } from 'rxjs/operators';
 @Component({
   selector: 'product-form',
   templateUrl: './product-form.component.html'
