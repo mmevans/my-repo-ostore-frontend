@@ -1,3 +1,4 @@
+import { OrderService } from './service-order/order.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { ShoppingCartService } from './service-shopping-cart/shopping-cart.service';
 import { ProductService } from './service-product/product.service';
@@ -24,20 +25,21 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { CheckoutComponent } from './checkout/checkout.component';
+import { CheckOutComponent } from './checkout/check-out.component';
 import { AdminAuthGuard } from './admin-auth-guard/admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { ProductsFilterComponent } from './products/products-filter/products-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 
 const appRoutes: Routes = [
   { path: '', component: ProductsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
-  { path: 'check-out', component: CheckoutComponent, canActivate: [AuthGuard] },
+  { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
   {
-    path: 'order-success',
+    path: 'order-success/:id',
     component: OrderSuccessComponent,
     canActivate: [AuthGuard]
   },
@@ -70,7 +72,7 @@ const appRoutes: Routes = [
     NavbarComponent,
     LoginComponent,
     ShoppingCartComponent,
-    CheckoutComponent,
+    CheckOutComponent,
     HomeComponent,
     ProductsComponent,
     OrderSuccessComponent,
@@ -80,7 +82,8 @@ const appRoutes: Routes = [
     ProductFormComponent,
     ProductsFilterComponent,
     ProductCardComponent,
-    ProductQuantityComponent
+    ProductQuantityComponent,
+    ShoppingCartSummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -98,7 +101,8 @@ const appRoutes: Routes = [
     AdminAuthGuard,
     CategoryService,
     ProductService,
-    ShoppingCartService
+    ShoppingCartService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })
